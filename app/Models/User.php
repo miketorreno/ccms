@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\CourtCase;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Orchid\Platform\Models\User as Authenticatable;
 
 class User extends Authenticatable
@@ -66,4 +68,9 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    // public function courtCases(): HasMany
+    // {
+    //     return $this->hasMany(CourtCase::class);
+    // }
 }
