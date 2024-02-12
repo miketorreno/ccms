@@ -29,18 +29,26 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 });
 
-// Client
-Route::middleware(['auth'])->group(function () {
-    Route::get('/client/dashboard', function () {
-        return view('client.dashboard');
-    })->name('client.dashboard');
-});
-
 // Clerk
 Route::middleware(['auth'])->group(function () {
     Route::get('/clerk/dashboard', function () {
         return view('clerk.dashboard');
     })->name('clerk.dashboard');
+
+    Route::get('/clerk/case', function () {
+        return view('clerk.case');
+    })->name('clerk.case');
+
+    Route::get('/clerk/court', function () {
+        return view('clerk.court');
+    })->name('clerk.court');
+});
+
+// Client
+Route::middleware(['auth'])->group(function () {
+    Route::get('/client/dashboard', function () {
+        return view('client.dashboard');
+    })->name('client.dashboard');
 });
 
 // Judge
