@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('zip_code');
             $table->foreignId('judge_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->nullable();
             $table->timestamps();
         });
     }

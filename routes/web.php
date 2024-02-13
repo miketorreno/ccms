@@ -2,6 +2,7 @@
 
 use App\Orchid\Screens\TaskScreen;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CourtController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 
@@ -29,20 +30,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 });
 
+
 // Clerk
-Route::middleware(['auth'])->group(function () {
-    Route::get('/clerk/dashboard', function () {
-        return view('clerk.dashboard');
-    })->name('clerk.dashboard');
+Route::group(['middleware' => 'auth', 'prefix' => 'clerk', 'as' => 'clerk.'], function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-    Route::get('/clerk/case', function () {
-        return view('clerk.case');
-    })->name('clerk.case');
+    Route::get('/case', function () {
+        return view('case');
+    })->name('case');
 
-    Route::get('/clerk/court', function () {
-        return view('clerk.court');
-    })->name('clerk.court');
+    // court
+    Route::get('/courts', [CourtController::class, 'index'])->name('courts.index');
+    Route::get('/courts/create', [CourtController::class, 'create'])->name('courts.create');
+    Route::post('/courts', [CourtController::class, 'store'])->name('courts.store');
 });
+
 
 // Client
 Route::middleware(['auth'])->group(function () {
@@ -51,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('client.dashboard');
 });
 
+
 // Judge
 Route::middleware(['auth'])->group(function () {
     Route::get('/judge/dashboard', function () {
@@ -58,12 +63,14 @@ Route::middleware(['auth'])->group(function () {
     })->name('judge.dashboard');
 });
 
+
 // Lawyer
 Route::middleware(['auth'])->group(function () {
     Route::get('/lawyer/dashboard', function () {
         return view('lawyer.dashboard');
     })->name('lawyer.dashboard');
 });
+
 
 Route::screen('task', TaskScreen::class)->name('platform.task');
 

@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Court;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CourtSeeder extends Seeder
 {
@@ -12,6 +14,8 @@ class CourtSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Court::factory(10)->create([
+            'judge_id' => User::factory()
+        ]);
     }
 }

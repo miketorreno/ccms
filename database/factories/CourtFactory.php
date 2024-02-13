@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class CourtFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->name(),
+            'city' => fake()->city(),
+            'state' => fake()->state(),
+            'zip_code' => fake()->postcode(),
+            'judge_id' => User::factory(),
         ];
     }
 }

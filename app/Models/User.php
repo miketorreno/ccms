@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Court;
 use App\Models\CourtCase;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
@@ -73,4 +74,9 @@ class User extends Authenticatable
     // {
     //     return $this->hasMany(CourtCase::class);
     // }
+
+    public function court()
+    {
+        return $this->hasOne(Court::class);
+    }
 }
