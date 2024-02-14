@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\CourtCase;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class PartyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'court_case_id' => CourtCase::factory(),
+            'name' => fake()->name(),
+            'address' => fake()->address(),
+            'phone_number' => fake()->phoneNumber(),
+            'party_type' => fake()->randomElement(['Plaintiff', 'Defendant', 'Witness']),
         ];
     }
 }

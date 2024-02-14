@@ -30,12 +30,12 @@ class PartyController extends Controller
      */
     public function store(Request $request)
     {
-        
         Party::create([
             'court_case_id' => $request->get('court_case_id'),
-            // 'user_id' => $request->get('user_id'),
             'name' => $request->get('name'),
             'address' => $request->get('address'),
+            'national_id' => $request->get('national_id'),
+            'military_id' => $request->get('military_id'),
             'phone_number' => $request->get('phone_number'),
             'party_type' => $request->get('party_type'),
         ]);

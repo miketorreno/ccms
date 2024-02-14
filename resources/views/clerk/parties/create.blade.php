@@ -23,12 +23,23 @@
                     placeholder="" required>
             </div>
             <div class="mb-5">
+                <label for="national_id" class="block mb-2 text-sm font-medium text-gray-900">National ID</label>
+                <input type="text" id="national_id" name="national_id"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="" required>
+            </div>
+            <div class="mb-5">
+                <label for="military_id" class="block mb-2 text-sm font-medium text-gray-900">Military ID</label>
+                <input type="text" id="military_id" name="military_id"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="" required>
+            </div>
+            <div class="mb-5">
                 <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900">Phone Number</label>
                 <input type="text" id="phone_number" name="phone_number"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     placeholder="" required>
             </div>
-            {{-- <input type="hidden" id="user_id" name="user_id" value="{{ auth()->user()->id }}"> --}}
             <div class="mb-5">
                 <label for="party_type" class="block mb-2 text-sm font-medium text-gray-900">Party type</label>
                 <select id="party_type" name="party_type"

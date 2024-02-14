@@ -68,8 +68,10 @@
                 @foreach ($courtCase->parties as $party)
                     <div class="pt-12">
                         <p class="text-lg md:text-xl">Name: {{ $party->name }}</p>
-                        <p class="text-lg md:text-xl">Type: {{ $party->party_type }}</p>
                         <p class="text-lg md:text-xl">Address: {{ $party->address }}</p>
+                        <p class="text-lg md:text-xl">National ID: {{ $party->national_id }}</p>
+                        <p class="text-lg md:text-xl">Military ID: {{ $party->military_id }}</p>
+                        <p class="text-lg md:text-xl">Type: {{ $party->party_type }}</p>
                         <p class="text-lg md:text-xl">Phone: {{ $party->phone_number }}</p>
                     </div>
                 @endforeach

@@ -76,6 +76,7 @@ class User extends Authenticatable
         return DB::table('role_users')
             ->leftJoin('users', 'users.id', '=', 'role_users.user_id')
             ->where('role_id', 1)
+            ->orderBy('id', 'DESC')
             ->get();
     }
 
@@ -83,6 +84,7 @@ class User extends Authenticatable
         return DB::table('role_users')
             ->leftJoin('users', 'users.id', '=', 'role_users.user_id')
             ->where('role_id', 2)
+            ->orderBy('id', 'DESC')
             ->get();
     }
 
@@ -90,6 +92,7 @@ class User extends Authenticatable
         return DB::table('role_users')
             ->leftJoin('users', 'users.id', '=', 'role_users.user_id')
             ->where('role_id', 3)
+            ->orderBy('id', 'DESC')
             ->get();
     }
 
@@ -97,6 +100,7 @@ class User extends Authenticatable
         return DB::table('role_users')
             ->leftJoin('users', 'users.id', '=', 'role_users.user_id')
             ->where('role_id', 4)
+            ->orderBy('id', 'DESC')
             ->get();
     }
 

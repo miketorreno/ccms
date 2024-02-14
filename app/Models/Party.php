@@ -14,8 +14,9 @@ class Party extends Model
         'court_case_id',
         'name',
         'address',
+        'national_id',
+        'military_id',
         'phone_number',
-        // 'user_id',
         'party_type',
     ];
     

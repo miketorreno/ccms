@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('parties', function (Blueprint $table) {
             $table->id();
             $table->foreignId('court_case_id');
-            // $table->foreignId('user_id');
             $table->string('name');
             $table->string('address');
+            $table->string('national_id');
+            $table->string('military_id');
             $table->string('phone_number');
             $table->string('party_type'); // plaintiff, defendant, witness
             $table->timestamps();
