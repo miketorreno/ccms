@@ -3,7 +3,9 @@
 use App\Orchid\Screens\TaskScreen;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourtController;
+use App\Http\Controllers\PartyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CourtCaseController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -37,14 +39,19 @@ Route::group(['middleware' => 'auth', 'prefix' => 'clerk', 'as' => 'clerk.'], fu
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/case', function () {
-        return view('case');
-    })->name('case');
-
     // court
     Route::get('/courts', [CourtController::class, 'index'])->name('courts.index');
     Route::get('/courts/create', [CourtController::class, 'create'])->name('courts.create');
     Route::post('/courts', [CourtController::class, 'store'])->name('courts.store');
+
+    // cases
+    Route::get('/cases', [CourtCaseController::class, 'index'])->name('cases.index');
+    Route::get('/cases/create', [CourtCaseController::class, 'create'])->name('cases.create');
+    Route::post('/cases', [CourtCaseController::class, 'store'])->name('cases.store');
+    Route::get('/cases/{courtCase}', [CourtCaseController::class, 'show'])->name('cases.show');
+
+    Route::get('/cases/{courtCase}/parties/create', [PartyController::class, 'create'])->name('cases.parties.create');
+    Route::post('/cases/{courtCase}/parties/store', [PartyController::class, 'store'])->name('cases.parties.store');
 });
 
 

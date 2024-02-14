@@ -6,6 +6,8 @@ use App\Models\Court;
 use App\Models\CourtCase;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
+use Orchid\Platform\Models\Role;
+use Illuminate\Support\Facades\DB;
 use Orchid\Filters\Types\WhereDateStartEnd;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Orchid\Platform\Models\User as Authenticatable;
@@ -70,10 +72,33 @@ class User extends Authenticatable
         'created_at',
     ];
 
-    // public function courtCases(): HasMany
-    // {
-    //     return $this->hasMany(CourtCase::class);
-    // }
+    public function scopeFilterClerks() {
+        return DB::table('role_users')
+            ->leftJoin('users', 'users.id', '=', 'role_users.user_id')
+            ->where('role_id', 1)
+            ->get();
+    }
+
+    public function scopeFilterClients() {
+        return DB::table('role_users')
+            ->leftJoin('users', 'users.id', '=', 'role_users.user_id')
+            ->where('role_id', 2)
+            ->get();
+    }
+
+    public function scopeFilterJudges() {
+        return DB::table('role_users')
+            ->leftJoin('users', 'users.id', '=', 'role_users.user_id')
+            ->where('role_id', 3)
+            ->get();
+    }
+
+    public function scopeFilterLawyers() {
+        return DB::table('role_users')
+            ->leftJoin('users', 'users.id', '=', 'role_users.user_id')
+            ->where('role_id', 4)
+            ->get();
+    }
 
     public function court()
     {

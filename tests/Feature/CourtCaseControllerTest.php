@@ -25,12 +25,9 @@ class CourtCaseControllerTest extends TestCase
     public function test_it_creates_a_court_case(): void
     {
         $clerk = User::factory()->create();
-        $judge = User::factory()->create();
         $lawyer = User::factory()->create();
         
         $response = $clerk->create([
-            "judge_id" => $judge->id,
-            "judge_id" => $judge->id,
             "lawyer_id" => $lawyer->id,
         ]);
 

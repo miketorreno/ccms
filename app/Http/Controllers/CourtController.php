@@ -26,10 +26,9 @@ class CourtController extends Controller
      */
     public function create()
     {
-        // $judges = Role::where('role.slug', '=', 'judge')->get();
-        // $judges = where
-        
-        return view('clerk.courts.create');
+        $judges = User::filterJudges();
+
+        return view('clerk.courts.create', compact('judges'));
     }
 
     /**

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Court;
+use App\Models\CourtCase;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCourtCaseRequest;
 use App\Http\Requests\UpdateCourtCaseRequest;
-use App\Models\CourtCase;
 
 class CourtCaseController extends Controller
 {
@@ -13,7 +16,9 @@ class CourtCaseController extends Controller
      */
     public function index()
     {
-        //
+        $cases = CourtCase::with(['court', 'parties'])->get();
+        
+        return view('clerk.cases.index', compact('cases'));
     }
 
     /**
@@ -21,17 +26,22 @@ class CourtCaseController extends Controller
      */
     public function create()
     {
-        //
+        $courts = Court::all();
+        $lawyers = User::filterLawyers();
+
+        return view('clerk.cases.create', compact(['courts', 'lawyers']));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCourtCaseRequest $request)
+    public function store(Request $request)
     {
-        // $case = new CourtCase();
-        CourtCase::query()
-            ->create($request->validated());
+        $courtCase = CourtCase::query()
+            ->create($request->all());
+
+        return view('clerk.cases.show', compact('courtCase'));
+        
     }
 
     /**
@@ -39,7 +49,7 @@ class CourtCaseController extends Controller
      */
     public function show(CourtCase $courtCase)
     {
-        //
+        return view('clerk.cases.show', compact('courtCase'));
     }
 
     /**

@@ -16,7 +16,7 @@ class DashboardController extends Controller
         if (Auth::user()->inRole('client')) {
             return redirect()->route('client.dashboard');
         } else if (Auth::user()->inRole('clerk')) {
-            return redirect()->route('clerk.dashboard');
+            return redirect()->route('clerk.cases.index');
         } else if (Auth::user()->inRole('judge')) {
             return redirect()->route('judge.dashboard');
         } else if (Auth::user()->inRole('lawyer')) {

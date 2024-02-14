@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CourtCase;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CourtCaseSeeder extends Seeder
 {
@@ -12,6 +13,6 @@ class CourtCaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        CourtCase::factory(10)->create();
     }
 }

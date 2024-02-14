@@ -17,21 +17,17 @@ return new class extends Migration
             $table->string('title');
             $table->string('case_type');
             $table->string('case_status');
-            $table->string('cause_of_action');
-            $table->string('case_details');
+            $table->text('cause_of_action');
+            $table->text('case_details');
             $table->foreignId('court_id');
-            $table->foreignId('party_id');
-            $table->foreignId('clerk_id')
-                ->references('id')
-                ->on('users');
-            $table->foreignId('judge_id')
-                ->references('id')
-                ->on('users');
             $table->foreignId('lawyer_id')
                 ->references('id')
                 ->on('users');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->foreignId('clerk_id')
+                ->references('id')
+                ->on('users');
+            $table->string('start_date');
+            $table->string('end_date');
             $table->timestamps();
         });
     }

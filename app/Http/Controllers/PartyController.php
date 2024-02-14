@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Party;
+use Illuminate\Http\Request;
 use App\Http\Requests\StorePartyRequest;
 use App\Http\Requests\UpdatePartyRequest;
-use App\Models\Party;
 
 class PartyController extends Controller
 {
@@ -21,15 +22,25 @@ class PartyController extends Controller
      */
     public function create()
     {
-        //
+        return view('clerk.parties.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePartyRequest $request)
+    public function store(Request $request)
     {
-        //
+        
+        Party::create([
+            'court_case_id' => $request->get('court_case_id'),
+            // 'user_id' => $request->get('user_id'),
+            'name' => $request->get('name'),
+            'address' => $request->get('address'),
+            'phone_number' => $request->get('phone_number'),
+            'party_type' => $request->get('party_type'),
+        ]);
+
+        return redirect()->route('clerk.cases.show', [$request->get('court_case_id')]);
     }
 
     /**

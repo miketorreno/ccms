@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <a href="{{ route('clerk.courts.create') }}"
+        <a href="{{ route('clerk.cases.create') }}"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-            Add Court
+            Add Case
         </a>
     </x-slot>
 
@@ -12,44 +12,63 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Court name
+                            Case number
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            city
+                            Title
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            state
+                            Type
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Zip Code
+                            Status
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Judge
+                            Cause of action
                         </th>
-                        {{-- <th scope="col" class="px-6 py-3"></th> --}}
+                        <th scope="col" class="px-6 py-3">
+                            Details
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Start date
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            End Date
+                        </th>
+                        <th scope="col" class="px-6 py-3"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($courts as $court)
+                    @foreach ($cases as $case)
                         <tr class="odd:bg-white even:bg-gray-50 border-b">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                {{ $court->name }}
+                                {{ $case->case_number }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $court->city }}
+                                {{ $case->title }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $court->state }}
+                                {{ $case->case_type }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $court->zip_code }}
+                                {{ $case->case_status }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $court->user->name }}
+                                {{ $case->cause_of_action }}
                             </td>
-                            {{-- <td class="px-6 py-4">
-                                <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                            </td> --}}
+                            <td class="px-6 py-4">
+                                {{ $case->case_details }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $case->start_date }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $case->end_date }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="{{ route('clerk.cases.show', [$case->id]) }}"
+                                    class="font-medium text-blue-600 hover:underline">View</a>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
