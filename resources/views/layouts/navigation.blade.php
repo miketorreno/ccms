@@ -17,6 +17,11 @@
                             Cases
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('clerk.courts.index')" :active="request()->routeIs('clerk.courts.index')">
+                            Courts
+                        </x-nav-link>
+                    </div>
                 @elsehasAccess('platform.systems.client')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('client.dashboard')" :active="request()->routeIs('client.dashboard')">
