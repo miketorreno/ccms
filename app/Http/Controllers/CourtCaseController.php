@@ -19,9 +19,17 @@ class CourtCaseController extends Controller
     {
         if (Auth::user()->inRole('clerk')) {
             $cases = CourtCase::with(['court', 'parties'])->get();
+
             return view('clerk.cases.index', compact('cases'));
         } else if (Auth::user()->inRole('judge')) {
-            return redirect()->route('judge.dashboard');
+            $court = Court::where('judge_id', auth()->user()->id)->first();
+            if ($court) {
+                $cases = CourtCase::with(['parties'])->where('court_id', $court->id)->get();
+            } else {
+                $cases = null;
+            }
+
+            return view('judge.dashboard', compact(['court', 'cases']));
         } else if (Auth::user()->inRole('lawyer')) {
             $cases = CourtCase::with(['court', 'parties'])->where('lawyer_id', auth()->user()->id)->get();
             return view('lawyer.dashboard', compact('cases'));
@@ -61,7 +69,7 @@ class CourtCaseController extends Controller
         if (Auth::user()->inRole('clerk')) {
             return view('clerk.cases.show', compact('courtCase'));
         } else if (Auth::user()->inRole('judge')) {
-            return redirect()->route('judge.dashboard');
+            return view('judge.show', compact('courtCase'));
         } else if (Auth::user()->inRole('lawyer')) {
             return view('lawyer.show', compact('courtCase'));
         } else {

@@ -62,19 +62,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'lawyer', 'as' => 'lawyer.'], 
 });
 
 
-// Client
-Route::middleware(['auth'])->group(function () {
-    Route::get('/client/dashboard', function () {
-        return view('client.dashboard');
-    })->name('client.dashboard');
-});
-
-
 // Judge
-Route::middleware(['auth'])->group(function () {
-    Route::get('/judge/dashboard', function () {
-        return view('judge.dashboard');
-    })->name('judge.dashboard');
+Route::group(['middleware' => 'auth', 'prefix' => 'judge', 'as' => 'judge.'], function () {
+    Route::get('/dashboard', [CourtCaseController::class, 'index'])->name('dashboard');
+    Route::get('/cases/{courtCase}', [CourtCaseController::class, 'show'])->name('cases.show');
 });
 
 

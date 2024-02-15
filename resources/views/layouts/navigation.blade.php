@@ -31,7 +31,7 @@
                 @elsehasAccess('platform.systems.judge')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('judge.dashboard')" :active="request()->routeIs('judge.dashboard')">
-                            Judge Dashboard
+                            Dashboard
                         </x-nav-link>
                     </div>
                 @elsehasAccess('platform.systems.lawyer')
