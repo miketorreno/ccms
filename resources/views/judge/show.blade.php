@@ -1,22 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <form method="POST" action="{{ route('lawyer.cases.delete', [$courtCase->id]) }}">
-            @csrf
-            @method('DELETE')
-            <a href="{{ route('lawyer.dashboard') }}"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-4">
-                View Cases
-            </a>
-            {{-- <a href="{{ route('lawyer.cases.edit', [$courtCase->id]) }}"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-4">
-                Edit
-            </a>
-            <a href="" onclick="event.preventDefault();
-                this.closest('form').submit();"
-                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-                Delete
-            </a> --}}
-        </form>
+        <a href="{{ route('judge.dashboard') }}"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-4">
+            View Cases
+        </a>
+        <a href="{{ route('judge.cases.edit', [$courtCase->id]) }}"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-4">
+            Decision
+        </a>
     </x-slot>
 
 

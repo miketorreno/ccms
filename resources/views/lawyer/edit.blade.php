@@ -32,7 +32,7 @@
                 <label for="case_status" class="block mb-2 text-sm font-medium text-gray-900">Case Status</label>
                 <input type="text" id="case_status" name="case_status"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    placeholder="" value="{{ $courtCase->case_status }}" required>
+                    placeholder="" value="{{ $courtCase->case_status }}" disabled required>
             </div>
             <div class="mb-5">
                 <label for="cause_of_action" class="block mb-2 text-sm font-medium text-gray-900">Cause of

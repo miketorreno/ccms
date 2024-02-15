@@ -22,7 +22,7 @@ class CourtCaseFactory extends Factory
             'case_number' => rand(1111, 9999),
             'title' => fake()->word(),
             'case_type' => fake()->randomElement(['Civil', 'Criminal']),
-            'case_status' => fake()->word(),
+            // 'case_status' => fake()->word(),
             'cause_of_action' => fake()->sentence(),
             'case_details' => fake()->paragraph(),
             'court_id' => Court::factory(),

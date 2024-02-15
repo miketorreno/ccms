@@ -25,6 +25,10 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+    Route::get('/client/dashboard', function () {
+        return view('client.dashboard');
+    })->name('client.dashboard');
 });
 
 
@@ -66,6 +70,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'lawyer', 'as' => 'lawyer.'], 
 Route::group(['middleware' => 'auth', 'prefix' => 'judge', 'as' => 'judge.'], function () {
     Route::get('/dashboard', [CourtCaseController::class, 'index'])->name('dashboard');
     Route::get('/cases/{courtCase}', [CourtCaseController::class, 'show'])->name('cases.show');
+    Route::get('/cases/{courtCase}/edit', [CourtCaseController::class, 'edit'])->name('cases.edit');
+    Route::put('/cases/{courtCase}', [CourtCaseController::class, 'update'])->name('cases.update');
 });
 
 

@@ -82,18 +82,14 @@ class CourtCaseController extends Controller
      */
     public function edit(CourtCase $courtCase)
     {
-        $courts = Court::all();
-        return view('lawyer.edit', compact(['courts', 'courtCase']));
-
-        // if (Auth::user()->inRole('clerk')) {
-        //     return view('clerk.cases.show', compact('courtCase'));
-        // } else if (Auth::user()->inRole('judge')) {
-        //     return redirect()->route('judge.dashboard');
-        // } else if (Auth::user()->inRole('lawyer')) {
-        //     return view('lawyer.edit', compact(['courts', 'courtCase']));
-        // } else {
-        //     return redirect()->route('client.dashboard');
-        // }
+        if (Auth::user()->inRole('judge')) {
+            return view('judge.edit', compact(['courtCase']));
+        } else if (Auth::user()->inRole('lawyer')) {
+            $courts = Court::all();
+            return view('lawyer.edit', compact(['courts', 'courtCase']));
+        } else {
+            return redirect()->route('client.dashboard');
+        }
     }
 
     /**
@@ -103,7 +99,7 @@ class CourtCaseController extends Controller
     {
         $courtCase->update($request->except(['_token', '_method']));
 
-        return view('lawyer.show', compact('courtCase'));
+        return view('judge.show', compact('courtCase'));
     }
 
     /**

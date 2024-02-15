@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('case_number');
             $table->string('title');
             $table->string('case_type');
-            $table->string('case_status');
+            $table->string('case_status')->nullable();
             $table->text('cause_of_action');
             $table->text('case_details');
             $table->foreignId('court_id')->nullable();
