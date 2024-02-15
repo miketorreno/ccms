@@ -21,7 +21,10 @@ class PartyFactory extends Factory
             'court_case_id' => CourtCase::factory(),
             'name' => fake()->name(),
             'address' => fake()->address(),
+            'national_id' => rand(1111111, 9999999),
+            'military_id' => rand(1111111, 9999999),
             'phone_number' => fake()->phoneNumber(),
+            'attorney' => fake()->title() . fake()->name(),
             'party_type' => fake()->randomElement(['Plaintiff', 'Defendant', 'Witness']),
         ];
     }

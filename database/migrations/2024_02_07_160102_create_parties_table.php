@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('national_id');
             $table->string('military_id');
             $table->string('phone_number');
+            $table->string('attorney');
             $table->string('party_type'); // plaintiff, defendant, witness
             $table->timestamps();
         });

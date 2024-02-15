@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('case_status');
             $table->text('cause_of_action');
             $table->text('case_details');
-            $table->foreignId('court_id');
+            $table->foreignId('court_id')->nullable();
             $table->foreignId('lawyer_id')
                 ->references('id')
                 ->on('users');

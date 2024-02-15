@@ -20,13 +20,8 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
@@ -35,10 +30,6 @@ Route::middleware('auth')->group(function () {
 
 // Clerk
 Route::group(['middleware' => 'auth', 'prefix' => 'clerk', 'as' => 'clerk.'], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
     // court
     Route::get('/courts', [CourtController::class, 'index'])->name('courts.index');
     Route::get('/courts/create', [CourtController::class, 'create'])->name('courts.create');
@@ -55,6 +46,22 @@ Route::group(['middleware' => 'auth', 'prefix' => 'clerk', 'as' => 'clerk.'], fu
 });
 
 
+// Lawyer
+Route::group(['middleware' => 'auth', 'prefix' => 'lawyer', 'as' => 'lawyer.'], function () {
+    Route::get('/dashboard', [CourtCaseController::class, 'index'])->name('dashboard');
+    Route::get('/cases/{courtCase}', [CourtCaseController::class, 'show'])->name('cases.show');
+    Route::get('/cases/{courtCase}/edit', [CourtCaseController::class, 'edit'])->name('cases.edit');
+    Route::put('/cases/{courtCase}', [CourtCaseController::class, 'update'])->name('cases.update');
+    Route::delete('/cases/{courtCase}', [CourtCaseController::class, 'destroy'])->name('cases.delete');
+
+    Route::get('/cases/{courtCase}/parties/create', [PartyController::class, 'create'])->name('cases.parties.create');
+    Route::post('/cases/{courtCase}/parties/store', [PartyController::class, 'store'])->name('cases.parties.store');
+    Route::get('/cases/{courtCase}/parties/{party}/edit', [PartyController::class, 'edit'])->name('cases.parties.edit');
+    Route::put('/cases/{courtCase}/parties/{party}', [PartyController::class, 'update'])->name('cases.parties.update');
+    Route::delete('/cases/{courtCase}/parties/{party}', [PartyController::class, 'destroy'])->name('cases.parties.delete');
+});
+
+
 // Client
 Route::middleware(['auth'])->group(function () {
     Route::get('/client/dashboard', function () {
@@ -68,14 +75,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/judge/dashboard', function () {
         return view('judge.dashboard');
     })->name('judge.dashboard');
-});
-
-
-// Lawyer
-Route::middleware(['auth'])->group(function () {
-    Route::get('/lawyer/dashboard', function () {
-        return view('lawyer.dashboard');
-    })->name('lawyer.dashboard');
 });
 
 

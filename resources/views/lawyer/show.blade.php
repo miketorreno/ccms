@@ -1,13 +1,22 @@
 <x-app-layout>
     <x-slot name="header">
-        <a href="{{ route('clerk.cases.index') }}"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-4">
-            View Cases
-        </a>
-        <a href="{{ route('clerk.cases.create') }}"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
-            Add Case
-        </a>
+        <form method="POST" action="{{ route('lawyer.cases.delete', [$courtCase->id]) }}">
+            @csrf
+            @method('DELETE')
+            <a href="{{ route('lawyer.dashboard') }}"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-4">
+                View Cases
+            </a>
+            <a href="{{ route('lawyer.cases.edit', [$courtCase->id]) }}"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-4">
+                Edit
+            </a>
+            <a href="" onclick="event.preventDefault();
+                this.closest('form').submit();"
+                class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                Delete
+            </a>
+        </form>
     </x-slot>
 
 
@@ -65,7 +74,7 @@
             </div>
             <div class="col-end-7 col-span-2">
                 <h4 class="text-2xl font-bold my-4">Parties Involved</h4>
-                <a href="{{ route('clerk.cases.parties.create', [$courtCase->id]) }}"
+                <a href="{{ route('lawyer.cases.parties.create', [$courtCase->id]) }}"
                     class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                     Add Party
                 </a>
@@ -78,6 +87,23 @@
                         <p class="text-lg md:text-xl my-2">Military ID: {{ $party->military_id }}</p>
                         <p class="text-lg md:text-xl my-2">Attorney: {{ $party->attorney }}</p>
                         <p class="text-lg md:text-xl my-2">Phone: {{ $party->phone_number }}</p>
+                        <div class="mt-6">
+                            <form method="POST"
+                                action="{{ route('lawyer.cases.parties.delete', [$courtCase->id, $party->id]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <a href="{{ route('lawyer.cases.parties.edit', [$courtCase->id, $party->id]) }}"
+                                    class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                    Edit
+                                </a>
+                                <a href=""
+                                    onclick="event.preventDefault();
+                                    this.closest('form').submit();"
+                                    class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                    Delete
+                                </a>
+                            </form>
+                        </div>
                     </div>
                 @endforeach
             </div>

@@ -17,6 +17,7 @@ class Party extends Model
         'national_id',
         'military_id',
         'phone_number',
+        'attorney',
         'party_type',
     ];
     

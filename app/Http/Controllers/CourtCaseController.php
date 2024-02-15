@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Court;
 use App\Models\CourtCase;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreCourtCaseRequest;
 use App\Http\Requests\UpdateCourtCaseRequest;
 
@@ -16,9 +17,17 @@ class CourtCaseController extends Controller
      */
     public function index()
     {
-        $cases = CourtCase::with(['court', 'parties'])->get();
-        
-        return view('clerk.cases.index', compact('cases'));
+        if (Auth::user()->inRole('clerk')) {
+            $cases = CourtCase::with(['court', 'parties'])->get();
+            return view('clerk.cases.index', compact('cases'));
+        } else if (Auth::user()->inRole('judge')) {
+            return redirect()->route('judge.dashboard');
+        } else if (Auth::user()->inRole('lawyer')) {
+            $cases = CourtCase::with(['court', 'parties'])->where('lawyer_id', auth()->user()->id)->get();
+            return view('lawyer.dashboard', compact('cases'));
+        } else {
+            return redirect()->route('client.dashboard');
+        }
     }
 
     /**
@@ -49,7 +58,15 @@ class CourtCaseController extends Controller
      */
     public function show(CourtCase $courtCase)
     {
-        return view('clerk.cases.show', compact('courtCase'));
+        if (Auth::user()->inRole('clerk')) {
+            return view('clerk.cases.show', compact('courtCase'));
+        } else if (Auth::user()->inRole('judge')) {
+            return redirect()->route('judge.dashboard');
+        } else if (Auth::user()->inRole('lawyer')) {
+            return view('lawyer.show', compact('courtCase'));
+        } else {
+            return redirect()->route('client.dashboard');
+        }
     }
 
     /**
@@ -57,15 +74,28 @@ class CourtCaseController extends Controller
      */
     public function edit(CourtCase $courtCase)
     {
-        //
+        $courts = Court::all();
+        return view('lawyer.edit', compact(['courts', 'courtCase']));
+
+        // if (Auth::user()->inRole('clerk')) {
+        //     return view('clerk.cases.show', compact('courtCase'));
+        // } else if (Auth::user()->inRole('judge')) {
+        //     return redirect()->route('judge.dashboard');
+        // } else if (Auth::user()->inRole('lawyer')) {
+        //     return view('lawyer.edit', compact(['courts', 'courtCase']));
+        // } else {
+        //     return redirect()->route('client.dashboard');
+        // }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCourtCaseRequest $request, CourtCase $courtCase)
+    public function update(Request $request, CourtCase $courtCase)
     {
-        //
+        $courtCase->update($request->except(['_token', '_method']));
+
+        return view('lawyer.show', compact('courtCase'));
     }
 
     /**
@@ -73,6 +103,8 @@ class CourtCaseController extends Controller
      */
     public function destroy(CourtCase $courtCase)
     {
-        //
+        $courtCase->delete();
+        $cases = CourtCase::with(['court', 'parties'])->where('lawyer_id', auth()->user()->id)->get();
+        return view('lawyer.dashboard', compact('cases'));
     }
 }
