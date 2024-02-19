@@ -111,4 +111,49 @@ class CourtCaseController extends Controller
         $cases = CourtCase::with(['court', 'parties'])->where('lawyer_id', auth()->user()->id)->get();
         return view('lawyer.dashboard', compact('cases'));
     }
+
+    public function find()
+    {
+        $result = null;
+
+        if (Auth::user()->inRole('clerk')) {
+            return view('clerk.cases.search', compact('result'));
+        } else if (Auth::user()->inRole('judge')) {
+            return view('judge.search', compact('result'));
+        } else if (Auth::user()->inRole('lawyer')) {
+            return view('lawyer.search', compact('result'));
+        } else {
+            return redirect()->route('client.dashboard');
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $result = CourtCase::where('case_number', $request->get('case_number'))->get();
+        if (!isset($result[0])) {
+            $result['message'] = 'No case found';
+        }
+        
+        if (Auth::user()->inRole('clerk')) {
+            return view('clerk.cases.search', compact('result'));
+        } else if (Auth::user()->inRole('judge')) {
+            $court = Court::where('judge_id', auth()->user()->id)->first();
+            if (!$court) {
+                $cases = null;
+            }
+            if (isset($result[0]) && $court != null && $result[0]['court_id'] != $court['id']) {
+                $result['message'] = "You're not assigned to this case";
+            }
+
+            return view('judge.search', compact('result'));
+        } else if (Auth::user()->inRole('lawyer')) {
+            if (isset($result[0]) && $result[0]['lawyer_id'] != Auth::user()->id) {
+                $result['message'] = "You're not assigned to this case";
+            }
+
+            return view('lawyer.search', compact('result'));
+        } else {
+            return redirect()->route('client.dashboard');
+        }
+    }
 }

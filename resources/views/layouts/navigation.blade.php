@@ -22,6 +22,11 @@
                             Courts
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('clerk.cases.search')" :active="request()->routeIs('clerk.cases.search')">
+                            Search
+                        </x-nav-link>
+                    </div>
                 @elsehasAccess('platform.systems.client')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('client.dashboard')" :active="request()->routeIs('client.dashboard')">
@@ -34,10 +39,20 @@
                             Dashboard
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('judge.cases.search')" :active="request()->routeIs('judge.cases.search')">
+                            Search
+                        </x-nav-link>
+                    </div>
                 @elsehasAccess('platform.systems.lawyer')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('lawyer.dashboard')" :active="request()->routeIs('lawyer.dashboard')">
                             Dashboard
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('lawyer.cases.search')" :active="request()->routeIs('lawyer.cases.search')">
+                            Search
                         </x-nav-link>
                     </div>
                 @else

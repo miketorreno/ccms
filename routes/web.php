@@ -44,6 +44,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'clerk', 'as' => 'clerk.'], fu
     Route::get('/cases/create', [CourtCaseController::class, 'create'])->name('cases.create');
     Route::post('/cases', [CourtCaseController::class, 'store'])->name('cases.store');
     Route::get('/cases/{courtCase}', [CourtCaseController::class, 'show'])->name('cases.show');
+    Route::get('/courts/search', [CourtCaseController::class, 'find'])->name('cases.find');
+    Route::post('/courts/search', [CourtCaseController::class, 'search'])->name('cases.search');
 
     Route::get('/cases/{courtCase}/parties/create', [PartyController::class, 'create'])->name('cases.parties.create');
     Route::post('/cases/{courtCase}/parties/store', [PartyController::class, 'store'])->name('cases.parties.store');
@@ -57,6 +59,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'lawyer', 'as' => 'lawyer.'], 
     Route::get('/cases/{courtCase}/edit', [CourtCaseController::class, 'edit'])->name('cases.edit');
     Route::put('/cases/{courtCase}', [CourtCaseController::class, 'update'])->name('cases.update');
     Route::delete('/cases/{courtCase}', [CourtCaseController::class, 'destroy'])->name('cases.delete');
+    Route::get('/courts/search', [CourtCaseController::class, 'find'])->name('cases.find');
+    Route::post('/courts/search', [CourtCaseController::class, 'search'])->name('cases.search');
 
     Route::get('/cases/{courtCase}/parties/create', [PartyController::class, 'create'])->name('cases.parties.create');
     Route::post('/cases/{courtCase}/parties/store', [PartyController::class, 'store'])->name('cases.parties.store');
@@ -72,6 +76,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'judge', 'as' => 'judge.'], fu
     Route::get('/cases/{courtCase}', [CourtCaseController::class, 'show'])->name('cases.show');
     Route::get('/cases/{courtCase}/edit', [CourtCaseController::class, 'edit'])->name('cases.edit');
     Route::put('/cases/{courtCase}', [CourtCaseController::class, 'update'])->name('cases.update');
+    Route::get('/courts/search', [CourtCaseController::class, 'find'])->name('cases.find');
+    Route::post('/courts/search', [CourtCaseController::class, 'search'])->name('cases.search');
 });
 
 
