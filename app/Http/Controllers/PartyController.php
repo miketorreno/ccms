@@ -38,6 +38,8 @@ class PartyController extends Controller
             'address' => $request->get('address'),
             'national_id' => $request->get('national_id'),
             'military_id' => $request->get('military_id'),
+            'education' => $request->get('education'),
+            'marriage' => $request->get('marriage'),
             'phone_number' => $request->get('phone_number'),
             'attorney' => $request->get('attorney'),
             'party_type' => $request->get('party_type'),

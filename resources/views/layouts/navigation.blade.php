@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
+                        MMCMS
                     </a>
                 </div>
 
@@ -14,45 +15,45 @@
                 @hasAccess('platform.systems.clerk')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('clerk.cases.index')" :active="request()->routeIs('clerk.cases.index')">
-                            Cases
+                            ክሶች
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('clerk.courts.index')" :active="request()->routeIs('clerk.courts.index')">
-                            Courts
+                            ችሎቶች
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('clerk.cases.search')" :active="request()->routeIs('clerk.cases.search')">
-                            Search
+                            ፈልግ
                         </x-nav-link>
                     </div>
                 @elsehasAccess('platform.systems.client')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('client.dashboard')" :active="request()->routeIs('client.dashboard')">
-                            Client Dashboard
+                            ዋና ገፅ
                         </x-nav-link>
                     </div>
                 @elsehasAccess('platform.systems.judge')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('judge.dashboard')" :active="request()->routeIs('judge.dashboard')">
-                            Dashboard
+                            ዋና ገፅ
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('judge.cases.search')" :active="request()->routeIs('judge.cases.search')">
-                            Search
+                            ፈልግ
                         </x-nav-link>
                     </div>
                 @elsehasAccess('platform.systems.lawyer')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('lawyer.dashboard')" :active="request()->routeIs('lawyer.dashboard')">
-                            Dashboard
+                            ዋና ገፅ
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('lawyer.cases.search')" :active="request()->routeIs('lawyer.cases.search')">
-                            Search
+                            ፈልግ
                         </x-nav-link>
                     </div>
                 @else
@@ -122,7 +123,7 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('ዋና ገፅ') }}
             </x-responsive-nav-link>
         </div>
 

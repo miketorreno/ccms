@@ -16,6 +16,8 @@ class Party extends Model
         'address',
         'national_id',
         'military_id',
+        'education',
+        'marriage',
         'phone_number',
         'attorney',
         'party_type',

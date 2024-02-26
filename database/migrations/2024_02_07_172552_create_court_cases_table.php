@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('case_status')->nullable();
             $table->text('cause_of_action');
             $table->text('case_details');
+            $table->text('decision')->nullable();
             $table->foreignId('court_id')->nullable();
             $table->foreignId('lawyer_id')
                 ->references('id')
@@ -27,7 +28,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('users');
             $table->string('start_date');
-            $table->string('end_date');
+            $table->string('app_date')->nullable();
             $table->timestamps();
         });
     }

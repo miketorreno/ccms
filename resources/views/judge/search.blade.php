@@ -3,7 +3,7 @@
         <form class="max-w-xl mx-auto" method="POST" action="{{ route('judge.cases.search') }}">
             @csrf
             <div class="mb-5">
-                {{-- <label for="case_number" class="block mb-2 text-sm font-medium text-gray-900">Case Number</label> --}}
+                {{-- <label for="case_number" class="block mb-2 text-sm font-medium text-gray-900">መለያ ቁጥር</label> --}}
                 <input type="text" id="case_number" name="case_number"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     placeholder="" required>
@@ -24,38 +24,38 @@
         @elseif (isset($result[0]))
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Case number
+                                መለያ ቁጥር
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Title
+                                ክስ
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Type
+                                የክሱ አይነት
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Status
+                                ያለበት ሁኒታ
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Cause of action
+                                የክርክሩ ሂደት
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Details
+                                ዝርዝር
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Start date
+                                የተመዘገበት ቀን
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                End Date
+                                የቀጠሮ ቀን
                             </th>
                             <th scope="col" class="px-6 py-3"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="odd:bg-white even:bg-gray-50 border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-gray-950">
                                 {{ $result[0]->case_number }}
                             </th>
                             <td class="px-6 py-4">
@@ -77,7 +77,7 @@
                                 {{ $result[0]->start_date }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $result[0]->end_date }}
+                                {{ $result[0]->app_date }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="{{ route('judge.cases.show', [$result[0]->id]) }}"

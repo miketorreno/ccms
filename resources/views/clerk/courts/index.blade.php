@@ -9,7 +9,7 @@
     <div class="py-12 max-w-7xl mx-auto">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             Court name
@@ -32,7 +32,7 @@
                 <tbody>
                     @foreach ($courts as $court)
                         <tr class="odd:bg-white even:bg-gray-50 border-b">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap text-gray-950">
                                 {{ $court->name }}
                             </th>
                             <td class="px-6 py-4">

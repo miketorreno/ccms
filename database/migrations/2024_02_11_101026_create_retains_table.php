@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('retains', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('case_id');
+            $table->foreignId('court_case_id');
             $table->foreignId('lawyer_id')
                 ->references('id')
                 ->on('users');

@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => fake()->name(),
+            'name' => "ሻምበል ዋሲሁን ጥላሁን",
             'email' => 'clerk@ccms.com',
             'password' => Hash::make('password')
         ]);
@@ -25,13 +25,23 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password')
         ]);
         User::create([
-            'name' => fake()->name(),
+            'name' => "ኮ/ል ተመስገን መንግስቱ",
             'email' => 'judge@ccms.com',
             'password' => Hash::make('password')
         ]);
         User::create([
-            'name' => fake()->name(),
+            'name' => "ሻለቃ ከበደ ባልቻ",
             'email' => 'lawyer@ccms.com',
+            'password' => Hash::make('password')
+        ]);
+        User::create([
+            'name' => "ሻለቃ ተስፋዬ ታደሰ",
+            'email' => 'judge2@ccms.com',
+            'password' => Hash::make('password')
+        ]);
+        User::create([
+            'name' => "ሌ/ኮ ብሩክ መስፍን",
+            'email' => 'judge3@ccms.com',
             'password' => Hash::make('password')
         ]);
     }

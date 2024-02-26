@@ -14,8 +14,8 @@ class PartySeeder extends Seeder
      */
     public function run(): void
     {
-        Party::factory(10)->create([
-            'court_case_id' => CourtCase::factory()
+        Party::factory(5)->create([
+            'court_case_id' => rand(1, 10)
         ]);
     }
 }

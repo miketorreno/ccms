@@ -18,13 +18,13 @@ class CourtCaseController extends Controller
     public function index()
     {
         if (Auth::user()->inRole('clerk')) {
-            $cases = CourtCase::with(['court', 'parties'])->get();
+            $cases = CourtCase::with(['court', 'parties', 'documents'])->get();
 
             return view('clerk.cases.index', compact('cases'));
         } else if (Auth::user()->inRole('judge')) {
             $court = Court::where('judge_id', auth()->user()->id)->first();
             if ($court) {
-                $cases = CourtCase::with(['parties'])->where('court_id', $court->id)->get();
+                $cases = CourtCase::with(['parties', 'documents'])->where('court_id', $court->id)->get();
             } else {
                 $cases = null;
             }
@@ -66,6 +66,7 @@ class CourtCaseController extends Controller
      */
     public function show(CourtCase $courtCase)
     {
+        // dd($courtCase);
         if (Auth::user()->inRole('clerk')) {
             return view('clerk.cases.show', compact('courtCase'));
         } else if (Auth::user()->inRole('judge')) {
@@ -92,6 +93,12 @@ class CourtCaseController extends Controller
         }
     }
 
+    public function assign(CourtCase $courtCase)
+    {
+        $courts = Court::all();
+        return view('lawyer.assign', compact(['courts', 'courtCase']));
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -99,7 +106,15 @@ class CourtCaseController extends Controller
     {
         $courtCase->update($request->except(['_token', '_method']));
 
-        return view('judge.show', compact('courtCase'));
+        if (Auth::user()->inRole('clerk')) {
+            return view('clerk.cases.show', compact('courtCase'));
+        } else if (Auth::user()->inRole('judge')) {
+            return view('judge.show', compact('courtCase'));
+        } else if (Auth::user()->inRole('lawyer')) {
+            return view('lawyer.show', compact('courtCase'));
+        } else {
+            return redirect()->route('client.dashboard');
+        }
     }
 
     /**
@@ -108,7 +123,7 @@ class CourtCaseController extends Controller
     public function destroy(CourtCase $courtCase)
     {
         $courtCase->delete();
-        $cases = CourtCase::with(['court', 'parties'])->where('lawyer_id', auth()->user()->id)->get();
+        $cases = CourtCase::with(['court', 'parties', 'documents'])->where('lawyer_id', auth()->user()->id)->get();
         return view('lawyer.dashboard', compact('cases'));
     }
 

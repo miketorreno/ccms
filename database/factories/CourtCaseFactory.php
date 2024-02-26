@@ -29,7 +29,7 @@ class CourtCaseFactory extends Factory
             'clerk_id' => User::factory(),
             'lawyer_id' => User::factory(),
             'start_date' => date('Y-m-d H:i:s'),
-            'end_date' => date('Y-m-d H:i:s'),
+            'app_date' => date('Y-m-d H:i:s'),
         ];
     }
 }

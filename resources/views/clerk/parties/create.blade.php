@@ -35,6 +35,29 @@
                     placeholder="" required>
             </div>
             <div class="mb-5">
+                <label for="education" class="block mb-2 text-sm font-medium text-gray-900">Educational status</label>
+                <select id="education" name="education"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option></option>
+                    <option value="No schooling">No schooling</option>
+                    <option value="Primary education">Primary education</option>
+                    <option value="Secondary education">Secondary education</option>
+                    <option value="Short-Cycle">Short-Cycle</option>
+                    <option value="Bachelor's degree">Bachelor's degree</option>
+                    <option value="Master's degree">Master's degree</option>
+                    <option value="Doctorate">Doctorate</option>
+                </select>
+            </div>
+            <div class="mb-5">
+                <label for="marriage" class="block mb-2 text-sm font-medium text-gray-900">Marital status</label>
+                <select id="marriage" name="marriage"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option></option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                </select>
+            </div>
+            <div class="mb-5">
                 <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900">Phone Number</label>
                 <input type="text" id="phone_number" name="phone_number"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"

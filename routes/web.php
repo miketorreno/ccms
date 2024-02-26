@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourtController;
 use App\Http\Controllers\PartyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\CourtCaseController;
 use App\Http\Controllers\DashboardController;
 
@@ -57,6 +58,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'lawyer', 'as' => 'lawyer.'], 
     Route::get('/dashboard', [CourtCaseController::class, 'index'])->name('dashboard');
     Route::get('/cases/{courtCase}', [CourtCaseController::class, 'show'])->name('cases.show');
     Route::get('/cases/{courtCase}/edit', [CourtCaseController::class, 'edit'])->name('cases.edit');
+    Route::get('/cases/{courtCase}/assign', [CourtCaseController::class, 'assign'])->name('cases.assign');
     Route::put('/cases/{courtCase}', [CourtCaseController::class, 'update'])->name('cases.update');
     Route::delete('/cases/{courtCase}', [CourtCaseController::class, 'destroy'])->name('cases.delete');
     Route::get('/courts/search', [CourtCaseController::class, 'find'])->name('cases.find');
@@ -67,6 +69,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'lawyer', 'as' => 'lawyer.'], 
     Route::get('/cases/{courtCase}/parties/{party}/edit', [PartyController::class, 'edit'])->name('cases.parties.edit');
     Route::put('/cases/{courtCase}/parties/{party}', [PartyController::class, 'update'])->name('cases.parties.update');
     Route::delete('/cases/{courtCase}/parties/{party}', [PartyController::class, 'destroy'])->name('cases.parties.delete');
+
+    Route::get('/cases/{courtCase}/documents/create', [DocumentController::class, 'create'])->name('cases.documents.create');
+    Route::post('/cases/{courtCase}/documents/store', [DocumentController::class, 'store'])->name('cases.documents.store');
 });
 
 

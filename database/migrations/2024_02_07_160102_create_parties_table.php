@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('address');
             $table->string('national_id');
             $table->string('military_id');
+            $table->string('education');
+            $table->string('marriage');
             $table->string('phone_number');
             $table->string('attorney');
             $table->string('party_type'); // plaintiff, defendant, witness

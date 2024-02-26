@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('case_id');
+            $table->foreignId('court_case_id');
             $table->string('event_type');
             $table->string('location');
             $table->string('outcome');
