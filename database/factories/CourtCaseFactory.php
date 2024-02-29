@@ -20,16 +20,18 @@ class CourtCaseFactory extends Factory
     {
         return [
             'case_number' => rand(1111, 9999),
-            'title' => fake()->word(),
-            'case_type' => fake()->randomElement(['Civil', 'Criminal']),
-            // 'case_status' => fake()->word(),
-            'cause_of_action' => fake()->sentence(),
+            'rank' => fake()->randomElement(['መ/ወ/ር', 'ም/፲/አ', '፲/አ', '፶/አ', 'ም/አ', 'መ/አ', 'ሻ/ል', 'ኮ/ል']),
+            'accuser' => fake()->name(),
+            'case_type' => fake()->randomElement(['ኩብለላ', 'ስርቆት', 'ከባድ የሰው ግድያ', 'የጥሪ ትህዛዝ አልማክበር', 'ከባድና ቀላል የአካል ጉዳት ማድረሰ']),
+            'case_status' => fake()->randomElement(['በሂደት ላይ', 'በቀጠሮ ላይ', 'የተወሰነ']),
+            'cause_of_action' => fake()->randomElement(['በራሳቸው', 'በግል ጠበቃ', 'በተከላካይ ጠበቃ']),
             'case_details' => fake()->paragraph(),
-            'court_id' => Court::factory(),
+            // 'court_id' => Court::factory(),
             'clerk_id' => User::factory(),
             'lawyer_id' => User::factory(),
             'start_date' => date('Y-m-d H:i:s'),
             'app_date' => date('Y-m-d H:i:s'),
+            'app_reason' => fake()->randomElement(['ለፍርድ', 'ለቃል ዝርዝር', 'ለእምነት ክህደት ቃል', 'የአቃቢ ህግ ማስረጃ ለመስማት', 'የተከላካይ ጠበቃ ማስረጃ ለመስማት']),
         ];
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('court_case_id');
-            // $table->string('document_type'); // pleading, exhibit, transcript
+            $table->string('document_type'); // pleading, exhibit, transcript
             $table->string('name');
             $table->string('description');
             $table->string('path');

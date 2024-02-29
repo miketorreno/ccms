@@ -26,7 +26,10 @@
                                 መለያ ቁጥር
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                ክስ
+                                ማዕረግ
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                ከሳሽ/ክፍል
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 የክሱ አይነት
@@ -46,6 +49,9 @@
                             <th scope="col" class="px-6 py-3">
                                 የቀጠሮ ቀን
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                የቀጠሮ ምክንያት
+                            </th>
                             <th scope="col" class="px-6 py-3"></th>
                         </tr>
                     </thead>
@@ -55,7 +61,10 @@
                                 {{ $result[0]->case_number }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $result[0]->title }}
+                                {{ $result[0]->rank }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $result[0]->accuser }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $result[0]->case_type }}
@@ -74,6 +83,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $result[0]->app_date }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $result[0]->app_reason }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="{{ route('clerk.cases.show', [$result[0]->id]) }}"

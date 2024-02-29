@@ -2,7 +2,7 @@
     @if (isset($court))
         <x-slot name="header">
             <h2 class="font-semibold text-3xl text-center text-gray-800 leading-tight">
-                COURT
+                የመከላከያ ወታድራዊ
             </h2>
             <h2 class="font-semibold text-3xl text-center text-gray-800 leading-tight">
                 {{ $court->name }}
@@ -20,7 +20,10 @@
                                     መለያ ቁጥር
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    ክስ
+                                    ማዕረግ
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    ከሳሽ/ክፍል
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     የክሱ አይነት
@@ -40,6 +43,9 @@
                                 <th scope="col" class="px-6 py-3">
                                     የቀጠሮ ቀን
                                 </th>
+                                <th scope="col" class="px-6 py-3">
+                                    የቀጠሮ ምክንያት
+                                </th>
                                 <th scope="col" class="px-6 py-3"></th>
                             </tr>
                         </thead>
@@ -50,7 +56,10 @@
                                         {{ $case->case_number }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{ $case->title }}
+                                        {{ $case->rank }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $case->accuser }}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $case->case_type }}
@@ -71,6 +80,9 @@
                                         {{ $case->app_date }}
                                     </td>
                                     <td class="px-6 py-4">
+                                        {{ $case->app_reason }}
+                                    </td>
+                                    <td class="px-6 py-4">
                                         <a href="{{ route('judge.cases.show', [$case->id]) }}"
                                             class="font-medium text-blue-600 hover:underline">View</a>
                                     </td>
@@ -80,11 +92,11 @@
                     </table>
                 </div>
             @else
-                <h3 class="text-3xl font-bold text-center dark:text-white my-16 capitalize">No cases assign to the court
+                <h3 class="text-3xl font-bold text-center dark:text-white my-16">No cases assign to this court
                 </h3>
             @endif
         @else
-            <h3 class="text-3xl font-bold text-center dark:text-white my-16 capitalize">No court assigned for you</h3>
+            <h3 class="text-3xl font-bold text-center dark:text-white my-16">No court assigned for you</h3>
         @endif
     </div>
 </x-app-layout>

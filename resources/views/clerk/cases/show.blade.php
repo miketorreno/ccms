@@ -19,8 +19,12 @@
                     <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->case_number }}</p>
                 </div>
                 <div class="mb-10">
-                    <h6 class="mb-1 font-bold text-xl md:text-xl">ክስ</h6>
-                    <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->title }}</p>
+                    <h6 class="mb-1 font-bold text-xl md:text-xl">ማዕረግ</h6>
+                    <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->rank }}</p>
+                </div>
+                <div class="mb-10">
+                    <h6 class="mb-1 font-bold text-xl md:text-xl">ከሳሽ/ክፍል</h6>
+                    <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->accuser }}</p>
                 </div>
                 <div class="mb-10">
                     <h6 class="mb-1 font-bold text-xl md:text-xl">የክሱ አይነት</h6>
@@ -51,6 +55,10 @@
                     <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->app_date }}</p>
                 </div>
                 <div class="mb-10">
+                    <h6 class="mb-1 font-bold text-xl md:text-xl">የቀጠሮ ምክንያት</h6>
+                    <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->app_reason }}</p>
+                </div>
+                <div class="mb-10">
                     <h6 class="mb-1 font-bold text-xl md:text-xl">ችሎት</h6>
                     @if (isset($courtCase->court))
                         <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->court->name }}</p>
@@ -75,15 +83,18 @@
                 </a>
                 @foreach ($courtCase->parties as $party)
                     <div class="pt-12">
-                        <p class="text-lg md:text-xl my-2 font-bold">የክሱ አይነት: {{ $party->party_type }}</p>
-                        <p class="text-lg md:text-xl my-2">Name: {{ $party->name }}</p>
-                        <p class="text-lg md:text-xl my-2">Address: {{ $party->address }}</p>
-                        <p class="text-lg md:text-xl my-2">National ID: {{ $party->national_id }}</p>
-                        <p class="text-lg md:text-xl my-2">Military ID: {{ $party->military_id }}</p>
-                        <p class="text-lg md:text-xl my-2">Educational status: {{ $party->education }}</p>
-                        <p class="text-lg md:text-xl my-2">Marital status: {{ $party->marriage }}</p>
-                        <p class="text-lg md:text-xl my-2">Attorney: {{ $party->attorney }}</p>
-                        <p class="text-lg md:text-xl my-2">Phone: {{ $party->phone_number }}</p>
+                        <div
+                            class="max-w-sm p-6 bg-white border border-gray-500 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <p class="text-lg md:text-xl my-2 font-bold">Party type: {{ $party->party_type }}</p>
+                            <p class="text-lg md:text-xl my-2">Name: {{ $party->name }}</p>
+                            <p class="text-lg md:text-xl my-2">Address: {{ $party->address }}</p>
+                            <p class="text-lg md:text-xl my-2">National ID: {{ $party->national_id }}</p>
+                            <p class="text-lg md:text-xl my-2">Military ID: {{ $party->military_id }}</p>
+                            <p class="text-lg md:text-xl my-2">Educational status: {{ $party->education }}</p>
+                            <p class="text-lg md:text-xl my-2">Marital status: {{ $party->marriage }}</p>
+                            <p class="text-lg md:text-xl my-2">Attorney: {{ $party->attorney }}</p>
+                            <p class="text-lg md:text-xl my-2">Phone: {{ $party->phone_number }}</p>
+                        </div>
                     </div>
                 @endforeach
             </div>

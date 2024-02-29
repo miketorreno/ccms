@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('court_cases', function (Blueprint $table) {
             $table->id();
             $table->string('case_number');
-            $table->string('title');
+            $table->string('rank');
+            $table->string('accuser');
             $table->string('case_type');
-            $table->string('case_status')->nullable();
-            $table->text('cause_of_action');
+            $table->string('case_status');
+            $table->string('cause_of_action');
             $table->text('case_details');
             $table->text('decision')->nullable();
             $table->foreignId('court_id')->nullable();
@@ -29,6 +30,7 @@ return new class extends Migration
                 ->on('users');
             $table->string('start_date');
             $table->string('app_date')->nullable();
+            $table->string('app_reason')->nullable();
             $table->timestamps();
         });
     }

@@ -21,10 +21,26 @@
                     placeholder="" value="{{ $courtCase->case_number }}" required>
             </div>
             <div class="mb-5">
-                <label for="title" class="block mb-2 text-sm font-medium text-gray-900">ክስ</label>
-                <input type="text" id="title" name="title"
+                <label for="rank" class="block mb-2 text-sm font-medium text-gray-900">ማዕረግ</label>
+                <select id="rank" name="rank"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                    placeholder="" value="{{ $courtCase->title }}" required>
+                    required>
+                    <option value=""></option>
+                    <option value="መ/ወ/ር">መ/ወ/ር</option>
+                    <option value="ም/፲/አ">ም/፲/አ</option>
+                    <option value="፲/አ">፲/አ</option>
+                    <option value="፶/አ">፶/አ</option>
+                    <option value="ም/አ">ም/አ</option>
+                    <option value="መ/አ">መ/አ</option>
+                    <option value="ሻ/ል">ሻ/ል</option>
+                    <option value="ኮ/ል">ኮ/ል</option>
+                </select>
+            </div>
+            <div class="mb-5">
+                <label for="accuser" class="block mb-2 text-sm font-medium text-gray-900">ከሳሽ/ክፍል</label>
+                <input type="text" id="accuser" name="accuser"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="" required>
             </div>
             <div class="mb-5">
                 <label for="case_type" class="block mb-2 text-sm font-medium text-gray-900">የክሱ አይነት</label>
@@ -81,6 +97,18 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Select date" value="{{ $courtCase->start_date }}" required>
                 </div>
+            </div>
+            <div class="mb-5">
+                <label for="app_reason" class="block mb-2 text-sm font-medium text-gray-900">የቀጠሮ ምክንያት</label>
+                <select id="app_reason" name="app_reason"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option value=""></option>
+                    <option value="ለፍርድ">ለፍርድ</option>
+                    <option value="ለቃል ዝርዝር">ለቃል ዝርዝር</option>
+                    <option value="ለእምነት ክህደት ቃል">ለእምነት ክህደት ቃል</option>
+                    <option value="የአቃቢ ህግ ማስረጃ ለመስማት">የአቃቢ ህግ ማስረጃ ለመስማት</option>
+                    <option value="የተከላካይ ጠበቃ ማስረጃ ለመስማት">የተከላካይ ጠበቃ ማስረጃ ለመስማት</option>
+                </select>
             </div>
             <button type="submit"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">

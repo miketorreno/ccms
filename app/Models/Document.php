@@ -13,6 +13,7 @@ class Document extends Model
     protected $fillable = [
         'court_case_id',
         'name',
+        'document_type',
         'description',
         'path',
     ];

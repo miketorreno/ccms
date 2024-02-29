@@ -16,7 +16,10 @@
                                 መለያ ቁጥር
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                ክስ
+                                ማዕረግ
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                ከሳሽ/ክፍል
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 የክሱ አይነት
@@ -36,6 +39,9 @@
                             <th scope="col" class="px-6 py-3">
                                 የቀጠሮ ቀን
                             </th>
+                            <th scope="col" class="px-6 py-3">
+                                የቀጠሮ ምክንያት
+                            </th>
                             <th scope="col" class="px-6 py-3"></th>
                         </tr>
                     </thead>
@@ -46,7 +52,10 @@
                                     {{ $case->case_number }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $case->title }}
+                                    {{ $case->rank }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $case->accuser }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $case->case_type }}
@@ -67,6 +76,9 @@
                                     {{ $case->app_date }}
                                 </td>
                                 <td class="px-6 py-4">
+                                    {{ $case->app_reason }}
+                                </td>
+                                <td class="px-6 py-4">
                                     <a href="{{ route('clerk.cases.show', [$case->id]) }}"
                                         class="font-medium text-blue-600 hover:underline">View</a>
                                 </td>
@@ -76,7 +88,7 @@
                 </table>
             </div>
         @else
-            <h3 class="text-3xl font-bold text-center dark:text-white my-16 capitalize">No cases yet</h3>
+            <h3 class="text-3xl font-bold text-center dark:text-white my-16">No cases yet</h3>
         @endif
     </div>
 </x-app-layout>

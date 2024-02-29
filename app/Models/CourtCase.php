@@ -15,7 +15,8 @@ class CourtCase extends Model
 
     protected $fillable = [
         'case_number',
-        'title',
+        'rank',
+        'accuser',
         'case_type',
         'case_status',
         'cause_of_action',
@@ -26,6 +27,7 @@ class CourtCase extends Model
         'lawyer_id',
         'start_date',
         'app_date',
+        'app_reason',
     ];
     
     public function court()

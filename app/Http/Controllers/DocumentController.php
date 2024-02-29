@@ -42,6 +42,7 @@ class DocumentController extends Controller
             $fileModel->path = '/storage/' . $filePath;
             $fileModel->court_case_id = $request->get('court_case_id');
             $fileModel->description = $request->get('description');
+            $fileModel->document_type = $request->get('document_type');
             $fileModel->save();
 
             // return redirect()->back();

@@ -25,7 +25,17 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     placeholder="" required>
             </div>
-
+            <div class="mb-5">
+                <label for="document_type" class="block mb-2 text-sm font-medium text-gray-900">Document type</label>
+                <select id="document_type" name="document_type"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    required>
+                    <option value="">Choose</option>
+                    <option value="Audio">Audio</option>
+                    <option value="Video">Video</option>
+                    <option value="File">File</option>
+                </select>
+            </div>
             <div class="mb-6 max-w-lg mx-auto">
                 <label class="block mb-2 font-medium text-gray-900 dark:text-white" for="document">Document</label>
                 <input
