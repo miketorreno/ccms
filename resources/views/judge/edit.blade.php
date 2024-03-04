@@ -22,9 +22,15 @@
                 </select>
             </div>
             <div class="mb-5">
+                <label for="app_date" class="block mb-2 text-sm font-medium text-gray-900">የቀጠሮ ቀን</label>
+                <input type="date" id="app_date" name="app_date"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="" value="{{ $courtCase->app_date }}" required>
+            </div>
+            <div class="mb-5">
                 <label for="app_reason" class="block mb-2 text-sm font-medium text-gray-900">የቀጠሮ ምክንያት</label>
                 <select id="app_reason" name="app_reason"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                     <option value=""></option>
                     <option value="ለፍርድ">ለፍርድ</option>
                     <option value="ለቃል ዝርዝር">ለቃል ዝርዝር</option>

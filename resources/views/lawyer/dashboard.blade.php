@@ -9,10 +9,16 @@
                                 መለያ ቁጥር
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                ማዕረግ
+                                መዝገብ ቁጥር
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                ተከሳሽ
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 ከሳሽ/ክፍል
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                ዕዝ
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 የክሱ አይነት
@@ -20,6 +26,7 @@
                             <th scope="col" class="px-6 py-3">
                                 ያለበት ሁኒታ
                             </th>
+                            <th scope="col" class="px-6 py-3"></th>
                             <th scope="col" class="px-6 py-3">
                                 የክርክሩ ሂደት
                             </th>
@@ -45,16 +52,28 @@
                                     {{ $case->case_number }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $case->rank }}
+                                    {{ $case->archive_number }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $case->rank . ' ' . $case->accused }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $case->accuser }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $case->case_type }}
+                                    {{ $case->location }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $case->case_status }}
+                                    {{ $case->case_type }}
+                                </td>
+                                <td class="px-6 py-4" colspan="2">
+                                    @if ($case->case_status == 'በሂደት ላይ')
+                                        <span class="bg-yellow-500 text-white text-xs p-2 rounded-full">{{ $case->case_status }}</span>
+                                    @elseif ($case->case_status == 'በቀጠሮ ላይ')
+                                        <span class="bg-green-700 text-white text-xs p-2 rounded-full">{{ $case->case_status }}</span>
+                                    @else
+                                        <span class="bg-red-800 text-white text-xs p-2 rounded-full">{{ $case->case_status }}</span>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $case->cause_of_action }}

@@ -15,8 +15,11 @@ class CourtCase extends Model
 
     protected $fillable = [
         'case_number',
+        'archive_number',
         'rank',
+        'accused',
         'accuser',
+        'location',
         'case_type',
         'case_status',
         'cause_of_action',
@@ -29,6 +32,11 @@ class CourtCase extends Model
         'app_date',
         'app_reason',
     ];
+
+    // protected $casts = [
+    //     'start_date'    => 'datetime',
+    //     'app_date'    => 'datetime',
+    // ];
     
     public function court()
     {

@@ -19,11 +19,12 @@
             <div>
                 <a href="/">
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
-                    <img src="/img/3.jpg" width="450px" alt="">
+                    <img src="/img/logo.jpg" width="450px" alt="">
                 </a>
             </div>
 
-            <h1 class="text-center text-4xl my-12">Court Case Management System</h1>
+            {{-- <h1 class="text-center text-4xl my-12">Court Case Management System</h1> --}}
+            <h1 class="text-center text-4xl my-12">በኢፊደሪ መከላከያ ሚኒስቴር የመከላከያ ፍርድ ቤት ሲስተም</h1>
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>

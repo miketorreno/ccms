@@ -146,7 +146,7 @@ class CourtCaseController extends Controller
     {
         $result = CourtCase::where('case_number', $request->get('case_number'))->get();
         if (!isset($result[0])) {
-            $result['message'] = 'No case found';
+            $result['message'] = 'No cases found';
         }
         
         if (Auth::user()->inRole('clerk')) {
@@ -167,6 +167,53 @@ class CourtCaseController extends Controller
             }
 
             return view('lawyer.search', compact('result'));
+        } else {
+            return redirect()->route('client.dashboard');
+        }
+    }
+
+    public function filter()
+    {
+        $results = null;
+
+        if (Auth::user()->inRole('clerk')) {
+            return view('clerk.cases.report', compact('results'));
+        } else if (Auth::user()->inRole('judge')) {
+            return view('judge.report', compact('results'));
+        } else if (Auth::user()->inRole('lawyer')) {
+            return view('lawyer.report', compact('results'));
+        } else {
+            return redirect()->route('client.dashboard');
+        }
+    }
+
+    public function report(Request $request)
+    {
+        // dd($request->all());
+        $results = CourtCase::query()
+            ->whereBetween('start_date', [$request->get('start'), $request->get('end')])
+            ->when(
+                $request->get('type'),
+                fn ($builder) => $builder->where('case_type', 'LIKE', '%'.$request->get('type').'%')
+            )
+            ->when(
+                $request->get('status'),
+                fn ($builder) => $builder->where('case_status', 'LIKE', '%'.$request->get('status').'%')
+            )
+            ->with('court')
+            ->get();
+        // dd($results);
+
+        if (!isset($results[0])) {
+            $results['message'] = 'No cases found';
+        }
+        
+        if (Auth::user()->inRole('clerk')) {
+            return view('clerk.cases.report', compact('results'));
+        } else if (Auth::user()->inRole('judge')) {
+            return view('judge.report', compact('results'));
+        } else if (Auth::user()->inRole('lawyer')) {
+            return view('lawyer.report', compact('results'));
         } else {
             return redirect()->route('client.dashboard');
         }

@@ -10,21 +10,28 @@
         </a>
     </x-slot>
 
-
     <div class="py-12 px-10 max-w-7xl mx-auto">
         <div class="grid grid-cols-6 gap-4">
-            <div class="col-start-1 col-end-4">
+            <div class="col-start-1 col-end-3">
                 <div class="mb-10">
                     <h6 class="mb-1 font-bold text-xl md:text-xl">መለያ ቁጥር</h6>
                     <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->case_number }}</p>
                 </div>
                 <div class="mb-10">
-                    <h6 class="mb-1 font-bold text-xl md:text-xl">ማዕረግ</h6>
-                    <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->rank }}</p>
+                    <h6 class="mb-1 font-bold text-xl md:text-xl">መዝገብ ቁጥር</h6>
+                    <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->archive_number }}</p>
+                </div>
+                <div class="mb-10">
+                    <h6 class="mb-1 font-bold text-xl md:text-xl">ተከሳሽ</h6>
+                    <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->rank . ' ' . $courtCase->accused }}</p>
                 </div>
                 <div class="mb-10">
                     <h6 class="mb-1 font-bold text-xl md:text-xl">ከሳሽ/ክፍል</h6>
                     <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->accuser }}</p>
+                </div>
+                <div class="mb-10">
+                    <h6 class="mb-1 font-bold text-xl md:text-xl">ዕዝ</h6>
+                    <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->location }}</p>
                 </div>
                 <div class="mb-10">
                     <h6 class="mb-1 font-bold text-xl md:text-xl">የክሱ አይነት</h6>
@@ -38,6 +45,8 @@
                     <h6 class="mb-1 font-bold text-xl md:text-xl">የክርክሩ ሂደት</h6>
                     <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->cause_of_action }}</p>
                 </div>
+            </div>
+            <div class="col-start-4 col-end-7">
                 <div class="mb-10">
                     <h6 class="mb-1 font-bold text-xl md:text-xl">ዝርዝር</h6>
                     <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->case_details }}</p>
@@ -63,7 +72,7 @@
                     @if (isset($courtCase->court))
                         <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->court->name }}</p>
                     @else
-                        <p class="text-gray-600 text-lg md:text-xl">Not assigned yet</p>
+                        <p class="text-gray-600 text-lg md:text-xl"></p>
                     @endif
                 </div>
                 {{-- <div class="mb-10">
@@ -74,27 +83,8 @@
                     <h6 class="mb-1 font-bold text-xl md:text-xl">አቃቤ ህግ</h6>
                     <p class="text-gray-600 text-lg md:text-xl">{{ $courtCase->lawyer->name }}</p>
                 </div>
-                <hr>
-                <div class="my-12">
-                    <h3 class="text-3xl font-bold my-4 text-center">Documents</h3>
-                    {{-- <a href="{{ route('lawyer.cases.documents.create', [$courtCase->id]) }}"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-4">
-                        Upload
-                    </a> --}}
-                    {{-- <div class="my-7"></div> --}}
-                    @foreach ($courtCase->documents as $document)
-                        <div class="pt-8">
-                            <p class="text-lg md:text-xl my-4 font-bold">Description: {{ $document->description }}</p>
-                            <p class="text-lg md:text-xl my-4 font-bold">Type: {{ $document->document_type }}</p>
-                            <a href="{{ $document->path }}"
-                                class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                Download
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
             </div>
-            <div class="col-end-7 col-span-2">
+            <div class="col-start-7 col-end-12">
                 <h4 class="text-2xl font-bold my-4">Parties Involved</h4>
                 {{-- <a href="{{ route('lawyer.cases.parties.create', [$courtCase->id]) }}"
                     class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
@@ -133,6 +123,27 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <div class="">
+                <hr>
+                <div class="my-12">
+                    <h3 class="text-3xl font-bold my-4 text-center">Documents</h3>
+                    {{-- <a href="{{ route('lawyer.cases.documents.create', [$courtCase->id]) }}"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-4">
+                        Upload
+                    </a> --}}
+                    {{-- <div class="my-7"></div> --}}
+                    @foreach ($courtCase->documents as $document)
+                        <div class="pt-8">
+                            <p class="text-lg md:text-xl my-4 font-bold">Description: {{ $document->description }}</p>
+                            <p class="text-lg md:text-xl my-4 font-bold">Type: {{ $document->document_type }}</p>
+                            <a href="{{ $document->path }}"
+                                class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                Download
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

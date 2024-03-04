@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('court_cases', function (Blueprint $table) {
             $table->id();
             $table->string('case_number');
+            $table->string('archive_number');
             $table->string('rank');
+            $table->string('accused');
             $table->string('accuser');
+            $table->string('location');
             $table->string('case_type');
             $table->string('case_status');
             $table->string('cause_of_action');
@@ -28,8 +31,8 @@ return new class extends Migration
             $table->foreignId('clerk_id')
                 ->references('id')
                 ->on('users');
-            $table->string('start_date');
-            $table->string('app_date')->nullable();
+            $table->date('start_date');
+            $table->date('app_date')->nullable();
             $table->string('app_reason')->nullable();
             $table->timestamps();
         });

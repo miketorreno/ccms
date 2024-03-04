@@ -16,7 +16,13 @@
                     placeholder="" required>
             </div>
             <div class="mb-5">
-                <label for="rank" class="block mb-2 text-sm font-medium text-gray-900">ማዕረግ</label>
+                <label for="archive_number" class="block mb-2 text-sm font-medium text-gray-900">የመዝገብ ቁጥር</label>
+                <input type="text" id="archive_number" name="archive_number"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="" required>
+            </div>
+            <div class="mb-5">
+                <label for="rank" class="block mb-2 text-sm font-medium text-gray-900">የተከሳሽ ማዕረግ</label>
                 <select id="rank" name="rank"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     required>
@@ -32,10 +38,31 @@
                 </select>
             </div>
             <div class="mb-5">
+                <label for="accused" class="block mb-2 text-sm font-medium text-gray-900">ተከሳሽ</label>
+                <input type="text" id="accused" name="accused"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="" required>
+            </div>
+            <div class="mb-5">
                 <label for="accuser" class="block mb-2 text-sm font-medium text-gray-900">ከሳሽ/ክፍል</label>
                 <input type="text" id="accuser" name="accuser"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     placeholder="" required>
+            </div>
+            <div class="mb-5">
+                <label for="location" class="block mb-2 text-sm font-medium text-gray-900">ዕዝ</label>
+                <select id="location" name="location"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    required>
+                    <option value=""></option>
+                    <option value="ምዕራብ ዕዝ">ምዕራብ ዕዝ</option>
+                    <option value="ሰሜን ምዕራብ ዕዝ">ሰሜን ምዕራብ ዕዝ</option>
+                    <option value="ማዕከላዊ ዕዝ">ማዕከላዊ ዕዝ</option>
+                    <option value="ደቡብ ዕዝ">ደቡብ ዕዝ</option>
+                    <option value="6ኛ ዕዝ">6ኛ ዕዝ</option>
+                    <option value="7ኛ ዕዝ">7ኛ ዕዝ</option>
+                    <option value="አየር ሃይል">አየር ሃይል</option>
+                </select>
             </div>
             <div class="mb-5">
                 <label for="case_type" class="block mb-2 text-sm font-medium text-gray-900">የክሱ አይነት</label>
@@ -48,6 +75,12 @@
                     <option value="ከባድ የሰው ግድያ">ከባድ የሰው ግድያ</option>
                     <option value="የጥሪ ትህዛዝ አልማክበር">የጥሪ ትህዛዝ አልማክበር</option>
                     <option value="ከባድና ቀላል የአካል ጉዳት ማድረሰ">ከባድና ቀላል የአካል ጉዳት ማድረሰ</option>
+                    <option value="ሰራዊቱን ተስፋ ማስቆረጥ">ሰራዊቱን ተስፋ ማስቆረጥ</option>
+                    <option value="ከስር ማምለጥ/ማስመለጥ">ከስር ማምለጥ/ማስመለጥ</option>
+                    <option value="ያለሃግባብ መቅረት">ያለሃግባብ መቅረት</option>
+                    <option value="ለበላይ አለመታዘዝ">ለበላይ አለመታዘዝ</option>
+                    <option value="የዘብ ጥበቃ መጣስ">የዘብ ጥበቃ መጣስ</option>
+                    <option value="ራስን ማቁሰል">ራስን ማቁሰል</option>
                 </select>
             </div>
             <input type="hidden" name="case_status" value="በሂደት ላይ">
@@ -97,6 +130,12 @@
             </div>
             <div class="mb-5">
                 <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900">የተመዘገበት ቀን</label>
+                <input type="date" id="start_date" name="start_date"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="" required>
+            </div>
+            {{-- <div class="mb-5">
+                <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900">የተመዘገበት ቀን</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -105,12 +144,12 @@
                                 d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                         </svg>
                     </div>
-                    <input id="start_date" name="start_date" datepicker type="text"
+                    <input id="start_date" name="start_date" datepicker type="datetime"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Select date">
                 </div>
-            </div>
-            <div class="mb-5">
+            </div> --}}
+            {{-- <div class="mb-5">
                 <label for="app_date" class="block mb-2 text-sm font-medium text-gray-900">የቀጠሮ ቀን</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -120,11 +159,11 @@
                                 d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                         </svg>
                     </div>
-                    <input id="app_date" name="app_date" datepicker type="text"
+                    <input id="app_date" name="app_date" datepicker type="datetime-local"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Select date">
                 </div>
-            </div>
+            </div> --}}
             <button type="submit"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                 Submit

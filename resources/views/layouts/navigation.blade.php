@@ -7,57 +7,73 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
-                        MMCMS
+                        {{-- MMCMS --}}
+                        <img src="/img/icon.jpg" width="100px" alt="">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 @hasAccess('platform.systems.clerk')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
                         <x-nav-link :href="route('clerk.cases.index')" :active="request()->routeIs('clerk.cases.index')">
                             ክሶች
                         </x-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
                         <x-nav-link :href="route('clerk.courts.index')" :active="request()->routeIs('clerk.courts.index')">
                             ችሎቶች
                         </x-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
                         <x-nav-link :href="route('clerk.cases.search')" :active="request()->routeIs('clerk.cases.search')">
                             ፈልግ
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
+                        <x-nav-link :href="route('clerk.cases.report')" :active="request()->routeIs('clerk.cases.report')">
+                            ሪፖርት
+                        </x-nav-link>
+                    </div>
                 @elsehasAccess('platform.systems.client')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
                         <x-nav-link :href="route('client.dashboard')" :active="request()->routeIs('client.dashboard')">
                             ዋና ገፅ
                         </x-nav-link>
                     </div>
                 @elsehasAccess('platform.systems.judge')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
                         <x-nav-link :href="route('judge.dashboard')" :active="request()->routeIs('judge.dashboard')">
                             ዋና ገፅ
                         </x-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
                         <x-nav-link :href="route('judge.cases.search')" :active="request()->routeIs('judge.cases.search')">
                             ፈልግ
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
+                        <x-nav-link :href="route('judge.cases.report')" :active="request()->routeIs('judge.cases.report')">
+                            ሪፖርት
+                        </x-nav-link>
+                    </div>
                 @elsehasAccess('platform.systems.lawyer')
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
                         <x-nav-link :href="route('lawyer.dashboard')" :active="request()->routeIs('lawyer.dashboard')">
                             ዋና ገፅ
                         </x-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
                         <x-nav-link :href="route('lawyer.cases.search')" :active="request()->routeIs('lawyer.cases.search')">
                             ፈልግ
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
+                        <x-nav-link :href="route('lawyer.cases.report')" :active="request()->routeIs('lawyer.cases.report')">
+                            ሪፖርት
+                        </x-nav-link>
+                    </div>
                 @else
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex font-bold text-blue-600">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('No role') }}
                         </x-nav-link>
